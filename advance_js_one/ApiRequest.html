@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myid{
+            color:blanchedalmond;
+        }
+    </style>
+</head>
+<body style="background-color: #212121;color:#ffffff;">
+    <pre>
+         0 (UNSEND) client has been created. open() not called yet.
+         1(OPENED) open() has been called.
+         2(HEADERS_RECEIVED) send() has been called, and headers and status are available.
+         3(LOADING) downloading; responseText holds partial data.
+         4(DONE) the operation is complete.
+     </pre>
+
+     <button id="clicked">Click me for Author details</button>
+     <div class="project">
+     </div>
+</body>
+<script>
+    const requesturl = "https://api.github.com/users/nileshsaha12";
+    const button = document.querySelector('#clicked');
+    const project = document.querySelector('.project');
+   const xhr = new XMLHttpRequest();
+
+   xhr.open('GET',requesturl)
+   xhr.onreadystatechange = function (){
+    // console.log(xhr.readyState);
+    if(xhr.readyState === 4){
+        // most of the time , when we recive respone from url,
+        // it cames as a String type, we have to convert it to JSON data
+        const data = JSON.parse(this.responseText);
+        // console.log(data);
+        button.addEventListener('click',() => {
+            project.innerHTML=`
+            <img width="200px" src="${data.avatar_url}" alt="my photo"></img>
+            <p> My GitHub id is : <span id="myid">${data.id}</span></p>
+            `
+        })
+        // data.id;
+        // data.avatar_url;
+    }
+   }
+    xhr.send()
+</script>
+</html>

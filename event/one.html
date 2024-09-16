@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;color:aqua;">
+    <h2>Amazing Images </h2>
+
+    <ul id="images">
+        <li><img width ="200px" src="./Best-Top-Desktop-Wallpapers-Hd.jpg" id="thunder" alt="1"></li>
+        <li><img width="200px" src="./download.jpeg" id="mountain" alt="2"></li>
+        <li><img width="200px" src="./the_crows_goddess_by_ellysiumn_ddd5f1u-fullview.jpg" id="nature" alt="3" "></li>
+        <li><img width="200px" src="./imagenil.jpg" id="sun" alt="4"></li>
+        <li ><a href="https://google.com" id="google" target="_blank" style="color: aqua;">Google</a></li>
+    </ul>
+    
+</body>
+<script>
+    //wrong
+    // document.getElementById('sun').onclick = () => {
+        //     alert("sun")
+        // }
+        //other some approaches
+            //attachEvent
+            //jQuery - on
+
+            //read the below concepts
+            //type,timestamp,deefaultPrevented
+            //target,toElement,srcElement, currentTarget,
+            //clientX,clientY, screenX,screenY
+            //altkey, ctrlkey, shiftkey, keycode
+    //best approach
+//     document.getElementById('sun').addEventListener('click' , () => {
+//         alert("sun clicked")
+//     })
+
+
+//     document.getElementById('sun').addEventListener('click', (e) => {
+//         console.log(e);
+//     },false)
+
+
+// // Event Propagation are types
+// //1)Event Bubling and 2)Event Capturing
+
+
+// //1) Example of Event Bubling
+
+// //In eventbubling scripts are execute from inside to outside
+
+
+// document.getElementById('images').addEventListener('click', function(e) {
+//     console.log('clicked inside the ul');
+// },false)
+// document.getElementById('mountain').addEventListener('click', function(e) {
+//     e.stopPropagation();
+//     console.log('mountain clicked');
+// },false)
+
+
+// //2) Example of Event Capturing
+
+// //In Event Capturing, scripts are executed from ouside to inside
+
+
+// // document.getElementById('images').addEventListener('click', function(e) {
+// //     console.log('clicked inside the ul');
+// // },true)
+// // document.getElementById('mountain').addEventListener('click', function(e) {
+// //     console.log('mountain clicked');
+// //     e.stopPropagation(); // Event Propagation is stopped
+// // },true)
+
+// document.getElementById('google').addEventListener('click', function(e){
+//     e.preventDefault();
+//     e.stopPropagation();
+//     console.log('google clicked');
+// })
+
+
+
+
+document.querySelector('#images').addEventListener('click', function(e){
+    console.log(e.target.tagName);
+    if(e.target.tagName === 'IMG'){
+        console.log(e.target.id);
+    let removeIt = e.target.parentNode;
+    removeIt.remove()
+    // removeIt.parentNode.removeChild(removeIt)
+    }
+})
+
+
+
+
+</script>
+</html>
