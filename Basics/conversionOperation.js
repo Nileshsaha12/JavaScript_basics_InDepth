@@ -13,6 +13,8 @@ let scnumb = Number(sc);
 console.log(typeof scnumb);
 console.log(scnumb); //return NaN , means not a number
 
+
+
 //"33" => 33
 // "33abc" => NaN(Not a Numebr)[but type of NaN is number it is little bit confusing]
 // true => 1; false => 0
